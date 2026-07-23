@@ -1,0 +1,85 @@
+.dark{
+
+background:#121212;
+
+color:white;
+
+}
+
+.dark .navbar{
+
+background:#000;
+
+}
+
+.dark .sidebar{
+
+background:#1b1b1b;
+
+}
+
+.dark .sidebar a{
+
+color:#ddd;
+
+}
+
+.dark .sidebar a:hover{
+
+background:#7c3aed;
+
+}
+
+.dark .card{
+
+background:#202020;
+
+color:white;
+
+}
+
+.dark .chart-card{
+
+background:#202020;
+
+}
+
+.dark .table{
+
+color:white;
+
+}
+
+.dark .table thead{
+
+background:#2b2b2b;
+
+}
+
+.dark input,
+
+.dark textarea,
+
+.dark select{
+
+background:#2b2b2b;
+
+color:white;
+
+border:1px solid #555;
+
+}
+
+.dark .form-control{
+
+background:#2b2b2b;
+
+color:white;
+
+}
+
+.dark .form-control::placeholder{
+
+color:#bbb;
+
+}

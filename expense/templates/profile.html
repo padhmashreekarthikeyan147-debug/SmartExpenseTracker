@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-6">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+<i class="bi bi-person-circle display-1 text-primary"></i>
+
+<h3 class="mt-3">
+
+{{ request.user.username }}
+
+</h3>
+
+<p>
+
+{{ request.user.email }}
+
+</p>
+
+<hr>
+
+<div class="row">
+
+<div class="col">
+
+<h5>Total Expenses</h5>
+
+<h3>
+
+{{ total_count }}
+
+</h3>
+
+</div>
+
+<div class="col">
+
+<h5>Total Amount</h5>
+
+<h3>
+
+₹{{ total }}
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Expense{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-7">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-primary text-white">
+
+<h3>
+
+<i class="bi bi-plus-circle"></i>
+
+Add New Expense
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Description
+
+</label>
+
+{{ form.description }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Amount (₹)
+
+</label>
+
+{{ form.amount }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Date
+
+</label>
+
+{{ form.date }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Notes
+
+</label>
+
+{{ form.notes }}
+
+</div>
+
+<div class="d-grid">
+
+<button class="btn btn-success btn-lg">
+
+<i class="bi bi-check-circle"></i>
+
+Save Expense
+
+</button>
+
+</div>
+{% if errors %}
+<div class="alert alert-danger">
+    {{ errors }}
+</div>
+{% endif %}
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

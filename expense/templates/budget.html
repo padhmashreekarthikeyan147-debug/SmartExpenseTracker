@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Budget{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-warning">
+
+<h3>
+
+<i class="bi bi-cash-stack"></i>
+
+Monthly Budget
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit" class="btn btn-warning w-100">
+
+<i class="bi bi-check-circle"></i>
+
+Save Budget
+
+</button>
+
+</form>
+
+<hr>
+
+<h5>Current Budget</h5>
+
+<h2 class="text-success">
+
+₹{{ budget }}
+
+</h2>
+
+<h5 class="mt-4">
+
+Remaining Budget
+
+</h5>
+
+<div class="progress" style="height:25px;">
+
+<div class="progress-bar bg-success"
+
+role="progressbar"
+
+style="width:{{ percentage }}%;">
+
+{{ percentage }}%
+
+</div>
+
+</div>
+
+<br>
+
+{% if alert %}
+
+<div class="alert alert-danger">
+
+<i class="bi bi-exclamation-triangle-fill"></i>
+
+Budget Exceeded!
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

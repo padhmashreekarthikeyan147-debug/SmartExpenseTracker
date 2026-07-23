@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+
+{% block title %}Expense List{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2>
+
+<i class="bi bi-list-check"></i>
+
+Expense List
+
+</h2>
+
+<div>
+
+<a href="{% url 'export_csv' %}" class="btn btn-success">
+
+<i class="bi bi-file-earmark-excel"></i>
+
+CSV
+
+</a>
+
+<a href="{% url 'export_pdf' %}" class="btn btn-danger">
+
+<i class="bi bi-file-earmark-pdf"></i>
+
+PDF
+
+</a>
+
+</div>
+
+</div>
+
+<form method="GET" class="mb-4">
+
+<div class="input-group">
+
+<input
+type="text"
+name="search"
+class="form-control"
+placeholder="Search by description..."
+value="{{ search }}">
+
+<button class="btn btn-primary">
+
+<i class="bi bi-search"></i>
+
+Search
+
+</button>
+
+</div>
+
+</form>
+
+<div class="card shadow">
+
+<div class="card-body p-0">
+
+<div class="table-responsive">
+
+<table class="table table-hover align-middle mb-0">
+
+<thead>
+
+<tr>
+
+<th>Description</th>
+
+<th>Category</th>
+
+<th>Amount</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for expense in expenses %}
+
+<tr>
+
+<td>{{ expense.description }}</td>
+
+<td>
+
+<span class="badge bg-primary">
+
+{{ expense.category }}
+
+</span>
+
+</td>
+
+<td class="fw-bold text-success">
+
+₹{{ expense.amount }}
+
+</td>
+
+<td>{{ expense.date }}</td>
+
+<td>
+
+<a href="{% url 'edit_expense' expense.id %}"
+
+class="btn btn-warning btn-sm">
+
+<i class="bi bi-pencil-square"></i>
+
+</a>
+
+<a href="{% url 'delete_expense' expense.id %}"
+
+class="btn btn-danger btn-sm"
+
+onclick="return confirm('Delete this expense?')">
+
+<i class="bi bi-trash"></i>
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5" class="text-center p-4">
+
+No expenses found.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<nav>
+
+<ul class="pagination justify-content-center">
+
+{% if expenses.has_previous %}
+
+<li class="page-item">
+
+<a class="page-link"
+
+href="?page={{ expenses.previous_page_number }}">
+
+Previous
+
+</a>
+
+</li>
+
+{% endif %}
+
+<li class="page-item active">
+
+<span class="page-link">
+
+{{ expenses.number }}
+
+</span>
+
+</li>
+
+{% if expenses.has_next %}
+
+<li class="page-item">
+
+<a class="page-link"
+
+href="?page={{ expenses.next_page_number }}">
+
+Next
+
+</a>
+
+</li>
+
+{% endif %}
+
+</ul>
+
+</nav>
+
+<div class="text-end mt-3">
+
+<h4>
+
+Total :
+
+<span class="text-success">
+
+₹{{ total }}
+
+</span>
+
+</h4>
+
+</div>
+
+</div>
+
+{% endblock %}
