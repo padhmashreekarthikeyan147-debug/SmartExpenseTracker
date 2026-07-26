@@ -1,1 +1,1 @@
-web: gunicorn SmartExpenseTracker.wsgi
+web: gunicorn SmartExpenseTracker.wsgi:application
