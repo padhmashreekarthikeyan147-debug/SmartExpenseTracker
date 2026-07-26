@@ -14,7 +14,7 @@ from datetime import timedelta
 import json
 
 import csv
-import pandas as pd
+
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from reportlab.pdfgen import canvas
